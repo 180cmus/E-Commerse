@@ -1,17 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AliceCarousel from 'react-alice-carousel'
 import HomeSectionCard from '../HomeSectionCard/HomeSectionCard'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowLeft';
 import { Button } from '@mui/material';
 
-const responsive = {
-    0: { items: 1 },
-    720: { items: 3 },
-    1024: { items: 5.5 }
-}
-const items = [1, 1, 1, 1, 1].map(item => <HomeSectionCard />)
+
+
 const HomeSectionCarousel = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    
+    const responsive = {
+        0: { items: 1 },
+        720: { items: 3 },
+        1024: { items: 5.5 }
+    }
+
+    const slidePrev = () =>  setActiveIndex(activeIndex-1)
+    const slideNext = () => setActiveIndex(activeIndex+1)
+    const syncActiveIndex = ({item}) => setActiveIndex(item)
+
+
+    const items = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map(item => <HomeSectionCard />)
+
     return (
         <div className='relative px-4 sm:px lg:px-8'>
             <div className='relative p-5 border'>
@@ -21,8 +32,11 @@ const HomeSectionCarousel = () => {
                     infinite
                     responsive={responsive}
                     disableDotsControls
+                    onSlideChange={syncActiveIndex}
+                    activeIndex={activeIndex}
                 />
-                <Button 
+                { activeIndex !== items.length - 5 && <Button 
+                    onClick={slideNext}
                     variant='contained'
                     className='z-50'
                     sx={{ 
@@ -40,8 +54,9 @@ const HomeSectionCarousel = () => {
                             color: 'black' 
                         }}
                     />
-                </Button>
-                <Button 
+                </Button>}
+                { activeIndex !== 0 && <Button 
+                    onClick={slidePrev}
                     variant='contained'
                     className='z-50'
                     sx={{ 
@@ -58,7 +73,7 @@ const HomeSectionCarousel = () => {
                             color: 'black' 
                         }}
                     />
-                </Button>
+                </Button>}
             </div>
         </div>
     )
