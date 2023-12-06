@@ -4,6 +4,7 @@ import HomeSectionCard from '../HomeSectionCard/HomeSectionCard'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowLeft';
 import { Button } from '@mui/material';
+import { mens_kurta } from '../../../data/mens_kurta';
 
 
 
@@ -21,7 +22,7 @@ const HomeSectionCarousel = () => {
     const syncActiveIndex = ({item}) => setActiveIndex(item)
 
 
-    const items = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map(item => <HomeSectionCard />)
+    const items = mens_kurta.slice(0,10).map(item => <HomeSectionCard product={item} />)
 
     return (
         <div className='relative px-4 sm:px lg:px-8'>
