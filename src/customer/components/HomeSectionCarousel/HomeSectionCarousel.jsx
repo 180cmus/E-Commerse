@@ -17,9 +17,9 @@ const HomeSectionCarousel = () => {
         1024: { items: 5.5 }
     }
 
-    const slidePrev = () =>  setActiveIndex(activeIndex-1)
-    const slideNext = () => setActiveIndex(activeIndex+1)
-    const syncActiveIndex = ({item}) => setActiveIndex(item)
+    const slidePrev = () =>  setActiveIndex(activeIndex-1);
+    const slideNext = () => setActiveIndex(activeIndex+1);
+    const syncActiveIndex = ({item}) => setActiveIndex(item);
 
 
     const items = mens_kurta.slice(0,10).map(item => <HomeSectionCard product={item} />)
@@ -30,16 +30,15 @@ const HomeSectionCarousel = () => {
                 <AliceCarousel
                     items={items}
                     disableButtonsControls
-                    infinite
-                    responsive={responsive}
                     disableDotsControls
-                    onSlideChange={syncActiveIndex}
+                    responsive={responsive}
+                    onSlideChanged={syncActiveIndex}
                     activeIndex={activeIndex}
                 />
                 { activeIndex !== items.length - 5 && <Button 
-                    onClick={slideNext}
                     variant='contained'
                     className='z-50'
+                    onClick={slideNext}
                     sx={{ 
                         position: 'absolute',
                         top: '8rem',
@@ -57,9 +56,9 @@ const HomeSectionCarousel = () => {
                     />
                 </Button>}
                 { activeIndex !== 0 && <Button 
-                    onClick={slidePrev}
                     variant='contained'
                     className='z-50'
+                    onClick={slidePrev}
                     sx={{ 
                         position: 'absolute',
                         top: '8rem', left: '0rem',
