@@ -4,11 +4,10 @@ import HomeSectionCard from '../HomeSectionCard/HomeSectionCard'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowLeft';
 import { Button } from '@mui/material';
-import { mens_kurta } from '../../../data/mens_kurta';
 
 
 
-const HomeSectionCarousel = () => {
+const HomeSectionCarousel = ({data, sectionName}) => {
     const [activeIndex, setActiveIndex] = useState(0);
     
     const responsive = {
@@ -22,18 +21,19 @@ const HomeSectionCarousel = () => {
     const syncActiveIndex = ({item}) => setActiveIndex(item);
 
 
-    const items = mens_kurta.slice(0,10).map(item => <HomeSectionCard product={item} />)
+    const items = data.slice(0,10).map(item => <HomeSectionCard product={item} />)
 
     return (
         <div className='relative px-4 sm:px lg:px-8'>
+            <h2 className='text-2xl font-extrabold text-gray-800 py-5'>{sectionName}</h2>
             <div className='relative p-5 border'>
                 <AliceCarousel
                     items={items}
-                    disableButtonsControls
+                    // disableButtonsControls
                     disableDotsControls
                     responsive={responsive}
-                    onSlideChanged={syncActiveIndex}
                     activeIndex={activeIndex}
+                    onSlideChanged={syncActiveIndex}
                 />
                 { activeIndex !== items.length - 5 && <Button 
                     variant='contained'
