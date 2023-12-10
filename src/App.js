@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './App.css';
 import Footer from './customer/components/Footer/Footer';
 import Navigation from './customer/components/Navigation/Navigation';
@@ -7,12 +8,12 @@ import Homepage from './customer/pages/Homepage/Homepage';
 function App() {
   return (
     <div className="">
-      <Navigation/>
+      <Navigation />
       <div>
         {/* <Homepage/> */}
-        <Product/>
+        <Product />
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
