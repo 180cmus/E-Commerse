@@ -1,6 +1,7 @@
 import './App.css';
 import Footer from './customer/components/Footer/Footer';
 import Navigation from './customer/components/Navigation/Navigation';
+import Product from './customer/components/Product/Product';
 import Homepage from './customer/pages/Homepage/Homepage';
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <div className="">
       <Navigation/>
       <div>
-        <Homepage/>
+        {/* <Homepage/> */}
+        <Product/>
       </div>
       <Footer/>
     </div>
